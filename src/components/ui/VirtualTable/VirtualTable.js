@@ -22,7 +22,7 @@ const VirtualTable = ({
 
     if (seedSortingChanged) {
       setSortBy(defaultSortBy)
-      setSortDirection(defaultSortBy)
+      setSortDirection(defaultSortDirection)
     }
 
     setSeedSortBy(defaultSortBy)
@@ -75,7 +75,7 @@ const VirtualTable = ({
           >
             {columns.map((c = {}) => (
               <Column
-                key={c.dataKey}
+                key={c.dataKey || c.id}
                 {...c}
               />
             ))}
@@ -95,7 +95,7 @@ VirtualTable.propTypes = {
   sortedDataPostProcessor: PropTypes.func,
   getSortedData: PropTypes.func,
   defaultSortBy: PropTypes.string,
-  defaultSortDirection: PropTypes.string,
+  defaultSortDirection: PropTypes.oneOf(['ASC', 'DESC']),
 }
 
 VirtualTable.defaultProps = {

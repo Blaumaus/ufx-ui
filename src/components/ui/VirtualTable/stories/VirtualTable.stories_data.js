@@ -1,7 +1,6 @@
 export const data = [
   {
     id: 64337708488,
-    gid: null,
     cid: 1620378628862,
     symbol: "tTESTBTC:TESTUSDT",
     created: 1620387948463,
@@ -13,7 +12,6 @@ export const data = [
   },
   {
     id: 64337708489,
-    gid: null,
     cid: 1620378628863,
     symbol: "tTESTBTC:TESTUSDT",
     created: 1620387948468,
@@ -25,7 +23,6 @@ export const data = [
   },
   {
     id: 64337708490,
-    gid: null,
     cid: 1620378628864,
     symbol: "tTESTBTC:TESTUSDT",
     created: 1620387948476,
@@ -37,7 +34,6 @@ export const data = [
   },
   {
     id: 64337708491,
-    gid: null,
     cid: 1620378628865,
     symbol: "tBTC:USDT",
     created: 1620387948522,
@@ -81,7 +77,7 @@ export const columns = [{
   label: 'Actions',
   dataKey: 'cid',
   width: 100,
-  cellRenderer: ({ rowData = {} }) => ( // eslint-disable-line
+  cellRenderer: () => (
     <div className='icons-cell'>
       <i
         role='button'

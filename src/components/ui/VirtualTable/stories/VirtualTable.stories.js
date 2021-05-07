@@ -7,7 +7,7 @@ export default getDefaultMetadata(VirtualTable, 'Components/ui/VirtualTable', {}
 const props = {
   data,
   columns,
-  defaultSortBy: 'mts',
+  defaultSortBy: 'id',
   defaultSortDirection: 'ASC',
 }
 
