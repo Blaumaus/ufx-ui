@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import _isEmpty from 'lodash/isEmpty'
 import { AutoSizer, Table, Column } from 'react-virtualized'
 import PropTypes from 'prop-types'
 
@@ -56,32 +57,36 @@ const VirtualTable = ({
   }
 
   return (
-    <div className='hfui-table'>
-      <AutoSizer>
-        {({ width, height }) => (
-          <Table
-            height={height}
-            width={width}
-            rowHeight={rowHeight}
-            rowGetter={({ index }) => processedData[index]}
-            rowCount={processedData.length}
-            onRowClick={onRowClick}
-            headerHeight={headerHeight}
-            disableHeader={false}
-            gridStyle={{ outline: 'none' }}
-            sort={onSort}
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-          >
-            {columns.map((c = {}) => (
-              <Column
-                key={c.dataKey || c.id}
-                {...c}
-              />
-            ))}
-          </Table>
-        )}
-      </AutoSizer>
+    <div className='vt-container'>
+      <div className='hfui-table'>
+        <AutoSizer>
+          {({ width, height }) => (
+            <Table
+              height={height}
+              width={width}
+              rowHeight={rowHeight}
+              rowGetter={({ index }) => processedData[index]}
+              rowCount={processedData.length}
+              onRowClick={onRowClick}
+              headerHeight={headerHeight}
+              disableHeader={false}
+              gridStyle={{ outline: 'none' }}
+              sort={onSort}
+              sortBy={sortBy}
+              sortDirection={sortDirection}
+            >
+              {console.log(width, height)}
+              {columns.map((c = {}) => (
+                <Column
+                  key={c.dataKey}
+                  dataKey={c.dataKey}
+                  {...c}
+                />
+              ))}
+            </Table>
+          )}
+        </AutoSizer>
+      </div>
     </div>
   )
 }

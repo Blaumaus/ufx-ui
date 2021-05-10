@@ -34,19 +34,25 @@
   }
 }
 
-.hfui-table {
-  height: 100%;
+.vt-container {
+  display: flex;
 
-  .icons-cell > * {
-    margin-right: 8px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-    &:hover {
-      cursor: pointer;
-      color: $yellow1;
+  .hfui-table {
+    flex: 1 1 auto;
+    height: calc(100vh - 35px);
+    width: 100vw;
+  
+    .icons-cell > * {
+      margin-right: 8px;
+  
+      &:last-child {
+        margin-right: 0;
+      }
+  
+      &:hover {
+        cursor: pointer;
+        color: $yellow1;
+      }
     }
   }
 }
