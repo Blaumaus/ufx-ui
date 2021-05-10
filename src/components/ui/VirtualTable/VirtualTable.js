@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import _isEmpty from 'lodash/isEmpty'
-import { AutoSizer, Table, Column } from 'react-virtualized'
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable padded-blocks */
 import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
+import { AutoSizer, Table, Column } from 'react-virtualized'
 
-import { getSortedData, sortData } from './VirtualTable.helpers'
+import { getSortedData as getSortedDataHelper, sortData } from './VirtualTable.helpers'
 
 const VirtualTable = ({
   data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor,
@@ -35,10 +36,14 @@ const VirtualTable = ({
       getSortedData, sortedDataPostProcessor,
     }))
 
-  }, [defaultSortBy, defaultSortDirection, data])
+  }, [defaultSortBy, defaultSortDirection, data, columns, getSortedData, seedData, seedSortBy, seedSortDirection, sortBy, sortDirection, sortedDataPostProcessor])
 
-  const onSort = ({ sortDirection: postSortDirection, defaultSortDirection, sortBy: postSortBy }) => {
-    const direction = sortDirection || defaultSortDirection
+  const onSort = ({
+    sortDirection: postSortDirection,
+    defaultSortDirection: propDefaultSortDirection,
+    sortBy: postSortBy,
+  }) => {
+    const direction = sortDirection || propDefaultSortDirection
 
     if (postSortBy === sortBy && postSortDirection === direction) {
       return
@@ -75,7 +80,6 @@ const VirtualTable = ({
               sortBy={sortBy}
               sortDirection={sortDirection}
             >
-              {console.log(width, height)}
               {columns.map((c = {}) => (
                 <Column
                   key={c.dataKey}
@@ -112,7 +116,7 @@ VirtualTable.defaultProps = {
   defaultSortDirection: 'ASC',
   onRowClick: () => { },
   sortedDataPostProcessor: () => { },
-  getSortedData, // NOTE: useful default
+  getSortedData: getSortedDataHelper, // NOTE: useful default
 }
 
 export default React.memo(VirtualTable)

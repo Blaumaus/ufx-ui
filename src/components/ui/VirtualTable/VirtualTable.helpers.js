@@ -1,5 +1,5 @@
-import _isFunction from 'lodash/isFunction'
 import _get from 'lodash/get'
+import _isFunction from 'lodash/isFunction'
 
 export const getTransformers = (columns = []) => {
   const transformers = {}
